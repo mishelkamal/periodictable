@@ -32,8 +32,9 @@ else
     TYPE="$($PSQL "SELECT types.type FROM elements FULL JOIN properties ON elements.atomic_number=properties.atomic_number FULL JOIN types ON properties.type_id=types.type_id WHERE elements.atomic_number = $ATOMIC_NUMBER")"
     R=$(printf "${SYMBOL}")
     
-    echo "The element with atomic number" $ATOMIC_NUMBER "is" $NAME "("$R"). It's a "$TYPE", with a mass of "$ATOMIC_MASS" amu. "$NAME "has a melting point of "$MELTING_POINT_CELSIUS "celsius and a boiling point of "$BOILING_POINT_CELSIUS "celsius."
-    
+    #echo "The element with atomic number" $ATOMIC_NUMBER "is" $NAME "("$R"). It's a "$TYPE", with a mass of "$ATOMIC_MASS" amu. "$NAME "has a melting point of "$MELTING_POINT_CELSIUS "celsius and a boiling point of "$BOILING_POINT_CELSIUS "celsius."
+    printf "The element with atomic number %-s is %-s (%-s). It's a %-s, with a mass of %-s amu. %-s has a melting point of %-s celsius and a boiling point of %-s celsius.\n" $ATOMIC_NUMBER $NAME $SYMBOL $TYPE $ATOMIC_MASS $NAME $MELTING_POINT_CELSIUS $BOILING_POINT_CELSIUS
+    #("$R"). It's a "$TYPE", with a mass of "$ATOMIC_MASS" amu. "$NAME "has a melting point of "$MELTING_POINT_CELSIUS "celsius and a boiling point of "$BOILING_POINT_CELSIUS "celsius."
   fi
 
 fi
